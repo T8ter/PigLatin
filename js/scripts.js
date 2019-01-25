@@ -19,15 +19,18 @@ function translate(phrase)  {
   if (vowels.includes(phrase[0]))  {
     return (phrase + "way");
   } else {
-      for (var i = 0; i < phrase.length;) {
-        if (!vowels.includes(phrase[i])) {
-          i++
+    for (var i = 0; i < phrase.length;) {
+      if (!vowels.includes(phrase[i])) {
+        i++;
+      } else {
+        if ((phrase[i] == "u" || phrase[i] == "U") && (phrase[i-1] == "q" || phrase[i-1] == "Q")) {
+          i++;
         } else {
           firstHalf = phrase.slice(0, i);
           secondHalf = phrase.slice(i, phrase.length);
           return (secondHalf + firstHalf + "ay");
-
         }
+      }
     }
   }
 }
